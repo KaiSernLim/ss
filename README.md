@@ -1,37 +1,41 @@
-## Welcome to GitHub Pages
+### CS 184: Computer Graphics and Imaging, Spring 2017
+# Final Project Proposal: Subsurface Scattering
+## by Kai-Sern Lim and Juchan Kim
 
-You can use the [editor on GitHub](https://github.com/KaiSernLim/ss/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Description
+In class, we implemented the BRDF which is a simplification of the BSSRDF. A BRDF is an approximation of the BSSRDF by assuming that the incident illumination is uniform. So for a BRDF, we assume that light scatters equally in all directions when reflecting off an object's surface. In the real world, not all materials reflect light in this matter. Some materials like human skin absorb some of the light which is emitted from another location on the object, which is called translucence. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The goal of this project is to extend the raytracer to be able to handle BSSRDF light scattering so we can render more detailed objects. Many interesting looking materials have translucent properties and we want to render materials that have such properties, such as milk and marble.
 
-### Markdown
+## Goals
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Our mission is to go beyond the simple metallic materials that we used in class, and create images that involve translucence like marble, jade and etc. We have included in the difference between regular BRDF with BSSRDF (subsurface scattering) that we are planning on implementing. 
 
-```markdown
-Syntax highlighted code block
+It's easy to see the difference of which photo will look the most closest to the real life by actually comparing the photo that we created with the material that we can see with our own eyes. It is unclear how much we can speed up much as our main intention is to make a better rendering of the translucent material. It will be possible to measure with what inputs we can make the program faster. But if we have time, we also hope to make our program as fast as possible and see how much improvement we were able to see time-wise by graphing the speedups.
 
-# Header 1
-## Header 2
-### Header 3
+If we have time, we will try methods such as [Hybrid Monte Carlo](https://pdfs.semanticscholar.org/1a5f/b35237c112d7e9b2446bdb9c85427dac1a87.pdf) in rendering the translucent materials. So, understanding the math and calculations involved with this is very important before we even start coding anything.
 
-- Bulleted
-- List
+We hope to see a photo with translucent materials that look like the actual material seen from the eye. Else, our understanding of math is probably wrong and should seek for help. But ideally, we would see a photo that rendered translucence correctly (at least imitates the real thing pretty well).
 
-1. Numbered
-2. List
+## Schedule
 
-**Bold** and _Italic_ and `Code` text
+**1st week:** Figure out the complicated math, assemble the necessary resources, translate all resources into clear pseudocode, divide the path tracer into modules, and begin implementation.
 
-[Link](url) and ![Image](src)
-```
+**2nd week:** Finish coding at least half of the modules. Hopefully complete the majority of the implementation.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+**3rd week:** Hope to finish coding if not yet there (leave 1 week for debugging), otherwise explore further extensions and stretch goals.
 
-### Jekyll Themes
+**4th week:** Tie up loose ends, focus on debugging, and maybe attempt the stretch goals. Spend time rendering quality images for your viewing pleasure.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/KaiSernLim/ss/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Resources
 
-### Support or Contact
+We are planning on starting from the ray tracer from project 3. By the end, with all the coding done, it will take a long time to run so we hope to run it by `ssh`-ing into the class account. We will need BSSRDF models and sufficient computing power to do the renders.
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Our guiding resource is the paper provided in the spec:
+[A Practical Model for Subsurface Light Transport](https://graphics.stanford.edu/papers/bssrdf/bssrdf.pdf)
+
+However, we also found other papers that can be possibly useful alongside the main paper in implementing and understanding the math:
+
+ - [Photon Beam Diffusion](http://disneyresearch.s3.amazonaws.com/wp-content/uploads/20140724021959/pbd1.pdf)
+ - [Disney Using BSSRDF](http://blog.selfshadow.com/publications/s2015-shading-course/burley/s2015_pbs_disney_bsdf_slides.pdf)
+ - [Hybrid Monte Carlo](https://pdfs.semanticscholar.org/1a5f/b35237c112d7e9b2446bdb9c85427dac1a87.pdf)
